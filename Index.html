@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>StudyHub</title>
+
+    <link
+    rel="stylesheet"
+    href="style.css">
+
+    <link rel="manifest" href="manifest.json">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar" id="sidebar">
+
+        <div class="logo">
+            StudyHub
+        </div>
+
+        <ul>
+
+            <li onclick="showPage('dashboardPage')">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </li>
+
+            <li onclick="showPage('taskPage')">
+                <i class="fa-solid fa-list-check"></i>
+                Tasks
+            </li>
+
+            <li onclick="showPage('calendarPage')">
+                <i class="fa-solid fa-calendar"></i>
+                Calendar
+            </li>
+
+            <li onclick="showPage('notesPage')">
+                <i class="fa-solid fa-note-sticky"></i>
+                Notes
+            </li>
+
+            <li onclick="showPage('calculatorPage')">
+                <i class="fa-solid fa-calculator"></i>
+                Calculator
+            </li>
+
+            <li onclick="showPage('pdfPage')">
+                <i class="fa-solid fa-file-pdf"></i>
+                PDF Reader
+            </li>
+
+            <li onclick="showPage('pomodoroPage')">
+                <i class="fa-solid fa-clock"></i>
+                Pomodoro
+            </li>
+
+            <li onclick="showPage('settingsPage')">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+        <!-- NAVBAR -->
+
+        <div class="navbar">
+
+            <button
+            class="menu-btn"
+            onclick="toggleSidebar()">
+
+                ☰
+
+            </button>
+
+            <input
+            type="text"
+            id="searchInput"
+            placeholder="Search page...">
+
+            <div class="nav-right">
+
+                <button id="themeBtn">
+                    🌙
+                </button>
+
+                <div>
+
+                    <div id="time"></div>
+
+                    <div id="date"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DASHBOARD -->
+
+        <div
+        class="page active"
+        id="dashboardPage">
+
+            <div class="card">
+
+                <h1>
+                    Welcome Student 👋
+                </h1>
+
+                <p>
+                    Manage your study life smartly.
+                </p>
+
+            </div>
+
+            <div class="stats">
+
+                <div class="card">
+
+                    <h3>About StudyHub</h3>
+
+                    <p>
+                        A smart student productivity web application with task, calendar, notes and study tools.
+                    </p>
+                    
+                </div>
+
+                <div class="card">
+
+                    <h2 id="taskCount">
+                        0
+                    </h2>
+
+                    <p>
+                        Total Tasks
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h2 id="noteCount">
+                        0
+                    </h2>
+
+                    <p>
+                        Total Notes
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h2 id="eventCount">
+                        0
+                    </h2>
+
+                    <p>
+                        Events
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h2 id="progress">
+                        0%
+                    </h2>
+                    <p>
+                        Task Completion
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TASK PAGE -->
+
+        <div
+        class="page"
+        id="taskPage">
+
+            <div class="card">
+
+                <div class="task-header">
+
+                    <h2>
+                        My Tasks
+                    </h2>
+
+                    <button id="addTaskBtn">
+                        Add Task
+                    </button>
+
+                </div>
+
+                <div id="emptyMessage">
+
+                    No Tasks Yet 🚀
+
+                </div>
+
+                <div id="taskList"></div>
+
+            </div>
+
+        </div>
+        
+<!-- CALENDAR -->
+
+<div class="page" id="calendarPage">
+
+    <div class="card">
+
+        <h2>Study Calendar</h2>
+
+        <div class="calendar-box">
+
+            <div class="calendar-header">
+                <button onclick="prevMonth()">◀</button>
+                <h3 id="monthYear"></h3>
+                <button onclick="nextMonth()">▶</button>
+            </div>
+
+            <div class="calendar-days">
+                <div>Sun</div><div>Mon</div><div>Tue</div>
+                <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+            </div>
+
+            <div id="calendarDates" class="calendar-dates"></div>
+
+        </div>
+
+    </div>
+    <div class="card">
+
+    <h3>Add Event</h3>
+
+    <input type="date" id="eventDate">
+    <input type="text" id="eventTitle" placeholder="Event Title">
+
+    <select id="eventType">
+        <option value="exam">Exam</option>
+        <option value="holiday">Holiday</option>
+        <option value="general">General</option>
+    </select>
+
+    <button onclick="addEvent()">Add Event</button>
+
+</div> 
+
+    <!-- EVENT LIST (Google style bottom) -->
+    <div class="card">
+        <h3>Upcoming Events</h3>
+        <div id="eventList"></div>
+    </div>
+
+</div>        
+
+        <!-- NOTES -->
+
+        <div
+        class="page"
+        id="notesPage">
+
+            <div class="card">
+
+                <h2>
+                    Notes
+                </h2>
+
+                <textarea
+                id="notesInput"
+                placeholder="Write your notes..."></textarea>
+
+                <input
+                type="date"
+                id="noteDate">
+
+                <button onclick="saveNotes()">
+
+                    Save Notes
+
+                </button>
+
+                <div id="notesList"></div>
+
+            </div>
+
+        </div>
+
+        <!-- CALCULATOR -->
+
+        <div
+        class="page"
+        id="calculatorPage">
+
+            <div class="card calculator">
+
+                <input
+                type="text"
+                id="calcDisplay"
+                readonly>
+
+                <div class="calc-buttons">
+
+                    <button onclick="calcValue('7')">
+                        7
+                    </button>
+
+                    <button onclick="calcValue('8')">
+                        8
+                    </button>
+
+                    <button onclick="calcValue('9')">
+                        9
+                    </button>
+
+                    <button onclick="calcValue('/')">
+                        ÷
+                    </button>
+
+                    <button onclick="calcValue('4')">
+                        4
+                    </button>
+
+                    <button onclick="calcValue('5')">
+                        5
+                    </button>
+
+                    <button onclick="calcValue('6')">
+                        6
+                    </button>
+
+                    <button onclick="calcValue('*')">
+                        ×
+                    </button>
+
+                    <button onclick="calcValue('1')">
+                        1
+                    </button>
+
+                    <button onclick="calcValue('2')">
+                        2
+                    </button>
+
+                    <button onclick="calcValue('3')">
+                        3
+                    </button>
+
+                    <button onclick="calcValue('-')">
+                        -
+                    </button>
+
+                    <button onclick="calcValue('0')">
+                        0
+                    </button>
+
+                    <button onclick="calcValue('.')">
+                        .
+                    </button>
+
+                    <button onclick="calculate()">
+                        =
+                    </button>
+
+                    <button onclick="calcValue('+')">
+                        +
+                    </button>
+
+                    <button onclick="deleteLast()">
+                        DC
+                    </button>
+
+                    <button onclick="clearCalc()">
+                        C
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PDF READER -->
+
+        <div
+        class="page"
+        id="pdfPage">
+
+            <div class="card">
+
+                <h2>
+                    PDF Reader
+                </h2>
+
+                <input
+                type="file"
+                id="pdfUpload"
+                accept="application/pdf">
+
+                <iframe id="pdfViewer"></iframe>
+
+            </div>
+
+        </div>
+
+        <!-- POMODORO -->
+
+        <div
+        class="page"
+        id="pomodoroPage">
+
+            <div class="card">
+
+                <h2>
+                    Pomodoro Timer
+                </h2>
+
+                <input
+                type="number"
+                id="pomodoroInput"
+                placeholder="Enter Minutes">
+
+                <h1 id="pomodoroTime">
+
+                    25:00
+
+                </h1>
+
+                <button onclick="startPomodoro()">
+                    Start
+                </button>
+
+                <button onclick="stopPomodoro()">
+                    Stop
+                </button>
+
+                <button onclick="resetPomodoro()">
+                    Reset
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- SETTINGS -->
+
+        <div
+        class="page"
+        id="settingsPage">
+
+            <div class="card">
+
+                <h2>
+                    Settings
+                </h2>
+
+                <button onclick="toggleTheme()">
+
+                    Toggle Theme
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- TASK MODAL -->
+
+    <div
+    class="modal"
+    id="taskModal">
+
+        <div class="modal-content">
+
+            <h2>
+                Create Task
+            </h2>
+
+            <input
+            type="text"
+            id="taskInput"
+            placeholder="Task Title">
+
+            <textarea
+            id="taskDesc"
+            placeholder="Task Description"></textarea>
+
+            <input
+            type="date"
+            id="taskDate">
+
+            <input
+            type="time"
+            id="taskTime">
+
+            <select id="taskPriority">
+
+                <option>
+                    Low
+                </option>
+
+                <option>
+                    Medium
+                </option>
+
+                <option>
+                    High
+                </option>
+
+            </select>
+
+            <button id="saveTask">
+
+                Save Task
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+<div id="eventPopup" class="event-popup">
+    <div class="popup-content">
+        <h3 id="popupDate"></h3>
+        <div id="popupEvents"></div>
+        <button onclick="closePopup()">Close</button>
+    </div>
+</div>
+
+</body>
+</html>

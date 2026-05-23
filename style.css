@@ -760,3 +760,95 @@ width:95%;
 }
 
 }
+
+/* ========= FINAL MOBILE FIX ========= */
+
+@media screen and (max-width:768px){
+
+.main{
+padding:10px !important;
+}
+
+.navbar{
+display:flex !important;
+flex-direction:row !important;
+align-items:center !important;
+gap:8px !important;
+flex-wrap:wrap !important;
+}
+
+.menu-btn{
+width:50px;
+margin:0;
+}
+
+.navbar input{
+flex:1 !important;
+min-width:160px;
+max-width:100% !important;
+margin:0;
+}
+
+.nav-right{
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+#themeBtn{
+margin:0;
+}
+
+.stats{
+display:grid !important;
+grid-template-columns:1fr 1fr !important;
+gap:10px;
+}
+
+.card{
+width:100%;
+overflow:hidden;
+padding:14px;
+}
+
+.calendar-box{
+overflow-x:auto;
+}
+
+.calendar-days,
+.calendar-dates{
+min-width:560px;
+}
+
+.calendar-dates div{
+height:70px !important;
+font-size:10px !important;
+overflow:hidden;
+}
+
+.calendar-dates small{
+font-size:8px !important;
+display:block;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+.task{
+overflow-wrap:break-word;
+}
+
+iframe{
+height:400px;
+}
+
+.modal-content{
+width:95% !important;
+}
+
+.sidebar{
+width:220px;
+}
+
+}

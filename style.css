@@ -445,51 +445,6 @@ iframe{
     color:#94a3b8;
 }
 
-
-@media screen and (max-width: 768px) {
-
-  .main {
-    padding: 10px;
-  }
-
-  .stats {
-    grid-template-columns: 1fr;
-  }
-
-  .navbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .nav-right {
-    justify-content: space-between;
-    width: 100%;
-  }
-
-}
-
-
-@media screen and (max-width: 768px) {
-  .sidebar {
-    width: 220px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .calendar-dates div {
-    height: 50px;
-    font-size: 12px;
-  }
-
-  .calendar-dates small {
-    font-size: 9px;
-  }
-}
-
-body {
-  overflow-x: hidden;
-}
-
 .calendar-days div{
     background:#e5e7eb;
     color:black;
